@@ -1,16 +1,11 @@
-const { WebClient } = require('@slack/web-api');
 require('dotenv').config()
 
 //Load the FAQ view modal in JSON 
 const faqView = require('../../views/faqView.json')
 
 
-const token = process.env.SLACK_API_TOKEN;
-const web = new WebClient(token);
-
-
-let inscriptionFlow = (payload) => {
-    web.chat.postMessage({
+let inscriptionFlow = (apiClient, payload) => {
+    apiClient.chat.postMessage({
         channel : payload.user.id,
         text: `Bienvenue à Mr Quiz, tu es bien inscris <@${payload.user.id}>`
     })
@@ -20,8 +15,8 @@ let inscriptionFlow = (payload) => {
 }
 
 
-let recapFlow = (payload) => {
-    web.chat.postMessage({
+let recapFlow = (apiClient, payload) => {
+    apiClient.chat.postMessage({
         channel : payload.user.id,
         mrkdwn: true,
         text: `Encore une fois toi ! Bon <@${payload.user.id}> *Voici ton récapitulatif*`
@@ -31,8 +26,8 @@ let recapFlow = (payload) => {
     })
 }
 
-let openFaq = (triggerId) => {
-    web.views.open({
+let openFaq = (apiClient, triggerId) => {
+    apiClient.views.open({
         trigger_id: triggerId,
         view: faqView
     })
