@@ -1,0 +1,65 @@
+{
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "Voici une première question pour te souhaiter la bienvenue. \n\n Dans le monde obscure du HTTP, il y a une famille de codes pour définir une erreur provenant du client  \n\n *Laquelle des familles suivantes :*"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "La famille des réponses 2xx (200, 202, 204 ..) "
+      },
+      "accessory": {
+        "type": "button",
+        "text": {
+          "type": "plain_text",
+          "text": "A",
+          "emoji": true
+        },
+        "value": "a_choice"
+      },
+      "block_id": "invalid_choice"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "La famille des réponses 4xx (400, 404, 403 ..) "
+      },
+      "accessory": {
+        "type": "button",
+        "text": {
+          "type": "plain_text",
+          "text": "B",
+          "emoji": true
+        },
+        "value": "b_choice"
+      },
+      "block_id": "valid_choice"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "La famille des réponses 5xx (500, 502, 503 ..) "
+      },
+      "accessory": {
+        "type": "button",
+        "text": {
+          "type": "plain_text",
+          "text": "C",
+          "emoji": true
+        },
+        "value": "c_choice"
+      },
+      "block_id": "invalid_choice"
+    }
+  ]
+}

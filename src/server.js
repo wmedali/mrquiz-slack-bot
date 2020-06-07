@@ -17,7 +17,6 @@ slackInteractions.action({ type: 'button' }, (payload, respond) => {
     // Logs the contents of the action to the console
 
     switch (payload.actions[0].value) {
-
         case 'inscription_button':
             Utils.inscriptionFlow(apiClient, payload)
             break;
@@ -27,12 +26,35 @@ slackInteractions.action({ type: 'button' }, (payload, respond) => {
         case 'faq_button':
             Utils.openFaq(apiClient, payload.trigger_id)
             break;
-        default:
-            return { text: 'Je connais pas cette action...' }
     }
 
     // Return a replacement message
     return { text: 'Action bien traitée...' };
+});
+
+slackInteractions.action({ type: 'button', blockId: 'valid_choice' }, (payload, respond) => {
+
+    apiClient.chat.postMessage({
+        channel: payload.user.id,
+        text: `Bravo !!! pour la bonne réponse :tada:`
+    })
+        .catch(error => {
+            console.log(error)
+        })
+
+    return { text: 'Bonne réponse bien traitée...' };
+});
+
+slackInteractions.action({ type: 'button', blockId: 'invalid_choice' }, (payload, respond) => {
+    apiClient.chat.postMessage({
+        channel: payload.user.id,
+        text: `Oups !! too bad wrong answer !`
+    })
+        .catch(error => {
+            console.log(error)
+        })
+
+    return { text: 'Mauvaise réponse bien traitée...' };
 });
 
 
