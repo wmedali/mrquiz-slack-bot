@@ -1,0 +1,22 @@
+{
+	"type": "modal",
+	"close": {
+		"type": "plain_text",
+		"text": "Close",
+		"emoji": true
+	},
+	"title": {
+		"type": "plain_text",
+		"text": " :question: FAQ",
+		"emoji": true
+	},
+	"blocks": [
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": " *Première question* \n Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus, augue eget lobortis imperdiet, est tellus pretium leo, ac viverra ligula diam vitae turpis. Nulla facilisi. Praesent accumsan tortor a arcu elementum, vel blandit elit imperdiet. Proin lacinia urna vitae elit tempor viverra. \n \n *Ddeuxième question* \n Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus, augue eget lobortis imperdiet, est tellus pretium leo, ac viverra ligula diam vitae turpis. Nulla facilisi. Praesent accumsan tortor a arcu elementum, vel blandit elit imperdiet. *Proin lacinia urna* vitae elit tempor viverra. Sed suscipit ipsum velit, sed posuere nibh tincidunt vitae. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. "
+			}
+		}
+	]
+}
