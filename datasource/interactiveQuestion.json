@@ -25,7 +25,7 @@
         },
         "value": "a_choice"
       },
-      "block_id": "invalid_choice"
+      "block_id": "invalid_choice_a"
     },
     {
       "type": "section",
@@ -59,7 +59,7 @@
         },
         "value": "c_choice"
       },
-      "block_id": "invalid_choice"
+      "block_id": "invalid_choice_b"
     }
   ]
 }

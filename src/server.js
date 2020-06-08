@@ -11,11 +11,13 @@ const slackInteractions = createMessageAdapter(slackSigningSecret);
 const token = process.env.SLACK_API_TOKEN;
 const apiClient = new WebClient(token);
 
+const homeButtonRegex = RegExp('home_button_*')
+const invalidChoiceRegex = new RegExp('invalid_choice_*')
 
 // Example of handling attachment actions. This is for button click, but menu selection would use `type: 'select'`.
-slackInteractions.action({ type: 'button' }, (payload, respond) => {
+slackInteractions.action({ type: 'button', actionId:  homeButtonRegex }, (payload, respond) => {
     // Logs the contents of the action to the console
-
+    console.log('A home button was clicked')
     switch (payload.actions[0].value) {
         case 'inscription_button':
             Utils.inscriptionFlow(apiClient, payload)
@@ -33,7 +35,7 @@ slackInteractions.action({ type: 'button' }, (payload, respond) => {
 });
 
 slackInteractions.action({ type: 'button', blockId: 'valid_choice' }, (payload, respond) => {
-
+    console.log('A valid choice was selected')
     apiClient.chat.postMessage({
         channel: payload.user.id,
         text: `Bravo !!! pour la bonne réponse :tada:`
@@ -45,7 +47,8 @@ slackInteractions.action({ type: 'button', blockId: 'valid_choice' }, (payload, 
     return { text: 'Bonne réponse bien traitée...' };
 });
 
-slackInteractions.action({ type: 'button', blockId: 'invalid_choice' }, (payload, respond) => {
+slackInteractions.action({ type: 'button', blockId: invalidChoiceRegex }, (payload, respond) => {
+    console.log('An invalid choice was selected')
     apiClient.chat.postMessage({
         channel: payload.user.id,
         text: `Oups !! too bad wrong answer !`
